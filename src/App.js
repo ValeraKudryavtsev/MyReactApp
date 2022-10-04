@@ -1,4 +1,6 @@
 import './App.css';
+import { TextField } from "@material-ui/core";
+import { Button } from '@material-ui/core';
 import React, { useState, useEffect } from 'react';
 
 function App() {
@@ -48,23 +50,37 @@ const MessageForm = ({ data, setData, setMessage }) => {
 
   return (
     <form onSubmit={submitForm}>
-      <input placeholder='Имя' type="text" value={author} onChange={(el) =>
-        setData(p => ({ ...p, author: el.target.value })
-        )} />
-      <input placeholder='Сообщение' type="text" value={text} onChange={(el) =>
-        setData(p => ({ ...p, text: el.target.value })
-        )} />
-      <button type='submit'>Отправить</button>
-    </form>
+      <TextField
+        className='inputStyle'
+        autoFocus={true}
+        id="outlined-name"
+        label="Name"
+        variant="outlined"
+        value={author}
+        onChange={(el) =>
+          setData(p => ({ ...p, author: el.target.value })
+          )}
+      />
+      <TextField
+        className='inputStyle'
+        id="outlined-text"
+        label="Message"
+        variant="outlined"
+        value={text}
+        onChange={(el) =>
+          setData(p => ({ ...p, text: el.target.value })
+          )}
+      />
+      <Button type='submit' variant="contained" style={{ margin: '20px', color: 'white', backgroundColor: '#5620e4', height: '40px' }}>Send</Button>
+    </form >
   )
 }
 
 const Message = (props) => {
   return (
-    <div>
+    <div className='testClass'>
       <h3>{props.author}</h3>
       <h4>{props.text}</h4>
-      <hr />
     </div>
   );
 }

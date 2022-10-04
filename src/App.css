@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .App-header {
@@ -14,5 +17,15 @@
 }
 
 .testClass {
-  color: rebeccapurple;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  border: 1px solid #5620e4;
+  width: 600px;
+}
+
+.inputStyle {
+  margin: 20px !important;
 }
