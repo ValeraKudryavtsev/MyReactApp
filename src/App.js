@@ -1,4 +1,4 @@
-import './reset.css'
+import './reset.css';
 import './App.css';
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, Link, useParams } from "react-router-dom";
@@ -6,6 +6,7 @@ import TextField from "@mui/material/TextField";
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 import { styled } from '@mui/material/styles';
+import ProfileToggler from './profileRedux/profileToggler';
 
 function App() {
   // Далее происходит что-то страшное...
@@ -54,6 +55,7 @@ const Profile = ({ userName, userAge }) => {
         <div className='userCard__info'>
           <h2>{userName}</h2>
           <p>{userAge} years</p>
+          <ProfileToggler />
         </div>
       </div>
     </div>
