@@ -109,6 +109,14 @@
   align-items: center;
 }
 
+.chats__list-button {
+  padding: 5px;
+  background-color: snow;
+  border: none;
+  border-radius: 5px;
+  margin: 15px;
+}
+
 .message__item {
   display: flex;
   flex-direction: column;
@@ -120,9 +128,10 @@
   border: 1px solid black;
   border-radius: 20px;
   margin-bottom: 20px;
+  margin: 10px;
 }
 
 .message__text {
   color: rgb(185, 185, 185);
-  margin-top: 10px;
+  margin: 10px;
 }
