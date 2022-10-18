@@ -1,5 +1,5 @@
 export function getChatsState(state) {
-    return state
+    return state.chats
 }
 
 export function getMessageState(state) {
