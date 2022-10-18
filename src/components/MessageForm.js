@@ -1,14 +1,15 @@
 import { ColorButton, CustomTextField } from '../myStyledMUI'
 import SendIcon from '@mui/icons-material/Send';
-import { useSelector, useDispatch } from 'react-redux';
-import Message from './Message'
-import { getMessageState } from './selectors';
+// import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
+// import Message from './Message'
+// import { getMessageState } from './selectors';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 const MessageForm = () => {
     const [text, setText] = useState("");
-    const messages = useSelector(getMessageState)
+    // const messages = useSelector(getMessageState)
     const id = useParams()
     const dispatch = useDispatch();
     const sendHandler = () => {
@@ -24,25 +25,31 @@ const MessageForm = () => {
         }
         setTimeout(() => {
             dispatch({ type: "SEND_MESSAGE", payload: robotAnswer })
-        }, 2000)
+        }, 1000)
+    }
+    const resetHandler = () => {
+        dispatch({ type: "RESET" })
     }
 
     return (
         <>
-            <div className='messageForm__box'>
+            <form className='messageForm__box'>
                 <CustomTextField
                     id="outlined-text"
                     label="Message"
                     value={text}
                     onChange={(el) => { setText(el.target.value) }}
                 />
-                <ColorButton type='button' variant="contained" endIcon={<SendIcon />} onClick={sendHandler}>
+                <ColorButton type='button' variant="contained" onClick={sendHandler} endIcon={<SendIcon />}>
                     Send
                 </ColorButton>
-            </div >
-            <ul className='message__list'>
+                <ColorButton type='button' variant="contained" onClick={resetHandler}>
+                    Clear
+                </ColorButton>
+            </form >
+            {/* <ul className='message__list'>
                 {messages.map((e, id) => <Message text={e.text} key={id}></Message>)}
-            </ul>
+            </ul> */}
         </>
     )
 }

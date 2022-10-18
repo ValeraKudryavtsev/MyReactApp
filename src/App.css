@@ -107,6 +107,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  overflow-y: scroll;
 }
 
 .chats__list-button {
@@ -134,4 +135,14 @@
 .message__text {
   color: rgb(185, 185, 185);
   margin: 10px;
+}
+
+.cats__output {
+  width: 100%;
+  height: 100vh;
+  padding: 20px;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

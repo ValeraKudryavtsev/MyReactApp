@@ -1,4 +1,4 @@
-import { ADD_CHAT, REMOVE_CHAT } from "./chatActions";
+import { ADD_CHAT, REMOVE_CHAT, RESET } from "./chatActions";
 
 const initialState = [
     {
@@ -22,6 +22,9 @@ export const chatsReducer = (state = initialState, action) => {
         }
         case REMOVE_CHAT: {
             return [...state.filter((e, i) => i < state.length - 1)]
+        }
+        case RESET: {
+            return initialState
         }
         default:
             return state

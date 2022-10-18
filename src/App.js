@@ -6,6 +6,7 @@ import AppNav from './components/AppNav';
 import ErrorPage from './components/ErrorPage';
 import Profile from './components/Profile'
 import Chats from './components/Chats';
+import Cats from './components/Cats';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path=':chatId' element={<Chats />} />
         </Route>
         <Route path='*' element={<ErrorPage />} />
+        <Route path="/cats" element={<Cats />} />
       </Routes>
     </div>
   );

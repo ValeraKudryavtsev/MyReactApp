@@ -5,6 +5,9 @@ export const messageReducer = (state = initialState, action) => {
         case "SEND_MESSAGE": {
             return [...state, action.payload]
         }
+        case "RESET": {
+            return initialState
+        }
         default:
             return state
     }
