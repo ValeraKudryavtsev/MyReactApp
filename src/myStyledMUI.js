@@ -4,6 +4,7 @@ import { styled } from '@mui/material/styles';
 
 export const ColorButton = styled(Button)(() => ({
     backgroundColor: '#5620e4',
+    marginLeft: '15px',
     height: '56px',
     width: '110px',
     '&:hover': {
@@ -13,7 +14,6 @@ export const ColorButton = styled(Button)(() => ({
 
 export const CustomTextField = styled(TextField)(() => ({
     width: '300px',
-    marginRight: '15px',
     '& label.Mui-focused': {
         color: '#5620e4',
     },

@@ -3,11 +3,14 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import MessageForm from "./MessageForm";
 import { addChatAC, removeChatAC } from "../redux/chatActions";
-import { getChatsState } from "./selectors";
+import { getChatsState, getMessageState } from "./selectors";
+import Message from './Message'
 
 const Chats = () => {
     const chats = useSelector(getChatsState)
     const dispatch = useDispatch()
+
+    const messages = useSelector(getMessageState)
 
     const [currentChatId, setCurrentChatId] = useState(0)
 
@@ -44,6 +47,9 @@ const Chats = () => {
             </ul>
             <div className='chat__box'>
                 <MessageForm />
+                <ul className='message__list'>
+                    {messages.map((e, id) => <Message text={e.text} key={id}></Message>)}
+                </ul>
             </div>
         </div>
     )
