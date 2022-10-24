@@ -6,26 +6,20 @@ import { useDispatch } from 'react-redux';
 // import { getMessageState } from './selectors';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useAuth } from '../hooks/useAuth';
+import { addMessage } from '../firebase/crud';
 
-const MessageForm = () => {
+const MessageForm = ({ formData, setFormData, getMessagesHandler }) => {
     const [text, setText] = useState("");
     // const messages = useSelector(getMessageState)
     const id = useParams()
     const dispatch = useDispatch();
+
+    const user = useAuth().email
+
     const sendHandler = () => {
-        const obj = {
-            id: id,
-            text: text,
-        }
-        console.log(obj)
-        dispatch({ type: "SEND_MESSAGE", payload: obj })
-        const robotAnswer = {
-            id: id,
-            text: "Robot: Сообщение отправлено"
-        }
-        setTimeout(() => {
-            dispatch({ type: "SEND_MESSAGE", payload: robotAnswer })
-        }, 1000)
+        addMessage(formData)
+        getMessagesHandler()
     }
     const resetHandler = () => {
         dispatch({ type: "RESET" })
@@ -37,15 +31,15 @@ const MessageForm = () => {
                 <CustomTextField
                     id="outlined-text"
                     label="Message"
-                    value={text}
-                    onChange={(el) => { setText(el.target.value) }}
+                    value={formData.body}
+                    onChange={(e) => { setFormData({ user, body: e.target.value }) }}
                 />
                 <ColorButton type='button' variant="contained" onClick={sendHandler} endIcon={<SendIcon />}>
                     Send
                 </ColorButton>
-                <ColorButton type='button' variant="contained" onClick={resetHandler}>
+                {/* <ColorButton type='button' variant="contained" onClick={resetHandler}>
                     Clear
-                </ColorButton>
+                </ColorButton> */}
             </form >
             {/* <ul className='message__list'>
                 {messages.map((e, id) => <Message text={e.text} key={id}></Message>)}

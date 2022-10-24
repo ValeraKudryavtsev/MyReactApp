@@ -3,13 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import Loader from "./Loader";
 import { fetchDataThunk } from '../redux/dataSlice'
 import { ColorButton } from '../myStyledMUI'
+import { Navigate } from "react-router-dom"
+import { useAuth } from "../hooks/useAuth"
 
 const Cats = () => {
-    // const CATS_URL = 'https://api.thecatapi.com/v1/images/search?limit=10&api_key=live_Gi9EesXZwvlKSW1t1l0ew5Qser18X0puo8kUREaSo1DHLrlQyxdmvMxfcZPshfVU'
-
-    // const [data, setData] = useState([]);
-    // const [loading, setLoading] = useState(false);
-    // const [error, setError] = useState(null);
+    const isAuth = useAuth().isAuth
 
     const { data, loading, err } = useSelector(state => state.data)
     const dispatch = useDispatch()
@@ -38,7 +36,7 @@ const Cats = () => {
     //     }, 1000)
     // }, []);
 
-    return (
+    return isAuth ? (
         <div className="cats__output">
             <h1>Cats</h1>
             {loading ? <Loader /> :
@@ -59,7 +57,7 @@ const Cats = () => {
                 </div> :
                 <></>}
         </div>
-    )
+    ) : (<Navigate to={'/login'} />)
 }
 
 export default Cats
