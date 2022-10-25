@@ -1,6 +1,6 @@
 import { ADD_CHAT, REMOVE_CHAT, RESET } from "./chatActions";
 
-const initialState = [
+export const initialState = [
     {
         id: '0',
         recipient: 'Steve',
